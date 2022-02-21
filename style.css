@@ -43,3 +43,8 @@
 .btn:hover {
   background-color: #0da026;
 }
+
+table{
+  border-collapse: separate;
+  border-spacing: 10px 10px;
+}
