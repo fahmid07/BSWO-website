@@ -47,4 +47,5 @@
 table{
   border-collapse: separate;
   border-spacing: 10px 10px;
+  border: #0da026 solid 1px;
 }
