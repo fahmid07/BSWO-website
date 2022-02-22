@@ -49,3 +49,12 @@ table{
   border-spacing: 10px 10px;
   border: #0da026 solid 1px;
 }
+
+.pointer {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pointer:hover {
+    color: #990000;
+}

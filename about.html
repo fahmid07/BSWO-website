@@ -71,7 +71,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">Contact</a>
+							<a class="nav-link" href="contact.html">Contact</a>
 						</li>
 
 						<li class="nav-item">
@@ -201,9 +201,32 @@
 				<div class="col-sm-6 py-5">
 					<div class="row justify-content-center text-center pb-4">
 						<h2 class="mb-3 font-weight-bold">Work Area</h2>
-						<hr allign="center"
-							style="height:6px; width:10%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
+						<hr allign="center" style="height:6px; width:10%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
 					</div>
+
+					<p class="fs-5 pt-4 pointer" onclick="district()"> <i class="fa fa-angle-double-right" style="color:#02b321"></i> District: 1</p>
+					<div id="dstrct" style="display:none;">
+						<p style="font-size:20px">Chattogram</p>
+					</div>
+					<hr style="height:3px; background-color:#02b321; margin-top: 3px; margin-bottom:10px;">
+
+					<p class="fs-5 pt-4 pointer" onclick="thana()"> <i class="fa fa-angle-double-right" style="color:#02b321"></i> Thana: 7</p>
+					<div id="thn" style="display:none;">
+						<p style="font-size:20px">Panchlaish, Chandgaon, Bayezid, Bakolia, Double Mooring, Kotwali and Hathazari</p>
+					</div>
+					<hr style="height:3px; background-color:#02b321; margin-top: 3px; margin-bottom:10px;">
+
+					<p class="fs-5 pt-4 pointer" onclick="ward()"> <i class="fa fa-angle-double-right" style="color:#02b321"></i> Ward: 17</p>
+					<div id="wrd" style="display:none;">
+						<p style="font-size:20px">Ward no. 3, 4, 5, 6, 7, 8, 15, 16, 18, 18, 20, 22, 24, 31, 32, 33 and 35 of Chittagong City Corporation</p>
+					</div>
+					<hr style="height:3px; background-color:#02b321; margin-top: 3px; margin-bottom:10px;">
+
+					<p class="fs-5 pt-4 pointer" onclick="union()"> <i class="fa fa-angle-double-right" style="color:#02b321"></i> Union: 1</p>
+					<div id="un" style="display:none;">
+						<p style="font-size:20px">East Shikarpur Union of Hathazari Thana</p>
+					</div>
+					<hr style="height:3px; background-color:#02b321; margin-top: 3px; margin-bottom:10px;">
 					
 				</div>
 			</div>
@@ -324,9 +347,9 @@
 				<div class="col-md-2 col-lg-2 col-xl-4 mx-auto mt-3" style="padding: 0rem 4rem;">
 					<h5 class="text-uppercase mb-3 font-weight-bold">Menu</h5>
 					<p>
-						<a href="#" class="text-white" style="text-decoration: none;"> First Page</a>
+						<a href="home.html" class="text-white" style="text-decoration: none;"> First Page</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> About Us</a>
+						<a href="about.html" class="text-white" style="text-decoration: none;"> About Us</a>
 						<br>
 						<a href="#" class="text-white" style="text-decoration: none;"> Banaful Family</a>
 						<br>
@@ -336,7 +359,7 @@
 						<br>
 						<a href="#" class="text-white" style="text-decoration: none;"> Activities</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Microcredit</a>
+						<a href="microfinance.html" class="text-white" style="text-decoration: none;"> Microfinance</a>
 						<br>
 						<a href="#" class="text-white" style="text-decoration: none;"> Gallery</a>
 						<br>
@@ -344,7 +367,7 @@
 						<br>
 						<a href="#" class="text-white" style="text-decoration: none;"> Notice</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Communication</a>
+						<a href="contact.html" class="text-white" style="text-decoration: none;"> Contact</a>
 					</p>
 				</div>
 
@@ -382,6 +405,42 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
+		<script>
+			function district() {
+			  var x = document.getElementById("dstrct");
+			  if (x.style.display === "none") {
+				x.style.display = "block";
+			  } else {
+				x.style.display = "none";
+			  }
+			}
+			function thana() {
+			  var x = document.getElementById("thn");
+			  if (x.style.display === "none") {
+				x.style.display = "block";
+			  } else {
+				x.style.display = "none";
+			  }
+			}
+			function ward() {
+			  var x = document.getElementById("wrd");
+			  if (x.style.display === "none") {
+				x.style.display = "block";
+			  } else {
+				x.style.display = "none";
+			  }
+			}
+
+			function union() {
+			  var x = document.getElementById("un");
+			  if (x.style.display === "none") {
+				x.style.display = "block";
+			  } else {
+				x.style.display = "none";
+			  }
+			}
+		</script>
 
 </body>
 
