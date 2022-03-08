@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -5,8 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		-->
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>BSWO</title>
@@ -44,9 +47,9 @@
                                 style="display: inline-flex;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="executive_committee.html">Executive Committee</a></li>
-                                <li><a class="dropdown-item" href="general_committee.html"
-                                        style="color: #990000;">General Committee</a></li>
+                                <li><a class="dropdown-item" href="executive_committee.html"
+                                        style="color: #990000;">Executive Committee</a></li>
+                                <li><a class="dropdown-item" href="general_committee.html">General Committee</a></li>
                                 <li><a class="dropdown-item" href="staff.html">Officers and
                                         staff</a></li>
                             </ul>
@@ -111,7 +114,7 @@
 
     <div class="container">
         <div class="row justify-content-center text-center">
-            <h2 class="mb-3 font-weight-bold">General Committee</h2>
+            <h2 class="mb-3 font-weight-bold">Executive Committee</h2>
             <hr allign="center"
                 style="height:6px; width:8%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
         </div>
@@ -119,87 +122,31 @@
 
     <div class="container">
         <div class="row m-2">
+            <?php
+                $query = "SELECT * FROM `executive` ORDER BY `executive`.`EC_CODE` ASC";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
             <div class="col-lg-6 mb-4">
                 <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
                     15px;">
                     <div class="row mt-3">
                         <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
+                            <img src="images/executive/<?php echo $row['EC_IMAGE']?>" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
                             15px;">
                         </div>
                         <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Ordinary member</h6>
+                            <h5 style="font-weight: bold;"><?php echo $row['EC_NAME']?></h5>
+                            <h6 style="color: #7A7A87; font-weight: 600;"><?php echo $row['EC_POST']?></h6>
                             <hr allign="center"
                                 style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Occupation&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Housewife</span></p>
-                            <p style="color: #0da026; font-weight: bold;">Educational
-                                Qualification&nbsp;&nbsp;&nbsp;<span style="color: #7A7A87; font-weight: 600;">5th
-                                    class</span></p>
                             <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
+                                    style="color: #7A7A87; font-weight: 600;"><?php echo $row['EC_ADDRESS']?></span></p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    15px;">
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                            15px;">
-                        </div>
-                        <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Ordinary member</h6>
-                            <hr allign="center"
-                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Occupation&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Housewife</span></p>
-                            <p style="color: #0da026; font-weight: bold;">Educational
-                                Qualification&nbsp;&nbsp;&nbsp;<span style="color: #7A7A87; font-weight: 600;">5th
-                                    class</span></p>
-                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    15px;">
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                            15px;">
-                        </div>
-                        <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Ordinary member</h6>
-                            <hr allign="center"
-                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Occupation&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Housewife</span></p>
-                            <p style="color: #0da026; font-weight: bold;">Educational
-                                Qualification&nbsp;&nbsp;&nbsp;<span style="color: #7A7A87; font-weight: 600;">5th
-                                    class</span></p>
-                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php } ?>
         </div>
     </div>
 

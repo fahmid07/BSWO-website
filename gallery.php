@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -44,11 +49,9 @@
                                 style="display: inline-flex;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="executive_committee.html"
-                                        style="color: #990000;">Executive Committee</a></li>
+                                <li><a class="dropdown-item" href="executive_committee.html">Executive Committee</a></li>
                                 <li><a class="dropdown-item" href="general_committee.html">General Committee</a></li>
-                                <li><a class="dropdown-item" href="staff.html">Officers and
-                                        staff</a></li>
+                                <li><a class="dropdown-item" href="staff.html">Officers and staff</a></li>
                             </ul>
                         </li>
 
@@ -66,7 +69,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="gallery.html">Gallery</a>
+                            <a class="nav-link" href="gallery.html" style="color: #990000;">Gallery</a>
                         </li>
 
                         <li class="nav-item">
@@ -111,7 +114,7 @@
 
     <div class="container">
         <div class="row justify-content-center text-center">
-            <h2 class="mb-3 font-weight-bold">Executive Committee</h2>
+            <h2 class="mb-3 font-weight-bold">Gallery</h2>
             <hr allign="center"
                 style="height:6px; width:8%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
         </div>
@@ -119,72 +122,21 @@
 
     <div class="container">
         <div class="row m-2">
-            <div class="col-lg-6 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    15px;">
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                            15px;">
-                        </div>
-                        <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Founder</h6>
-                            <hr allign="center"
-                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
-                        </div>
+            <?php
+                $query = "SELECT * FROM gallery";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
+            <div class="col-lg-4 mb-4">
+                <div class="card text-center">
+                    <img class="card-img-top" src="images/gallery/<?php echo $row['image']?>" alt="image"
+                        style="height: 15rem; object-fit: cover; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
+                    <div class="card-body p-1">
+                        <h5 class="card-title"> <?php echo $row['title']?> </h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    15px;">
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                            15px;">
-                        </div>
-                        <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Founder</h6>
-                            <hr allign="center"
-                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    15px;">
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                            15px;">
-                        </div>
-                        <div class="col-lg-8 text-start ps-5">
-                            <h5 style="font-weight: bold;">Mahfuza Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Founder</h6>
-                            <hr allign="center"
-                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
-                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
-                                    style="color: #7A7A87; font-weight: 600;">Village / Road: Hamzarbagh Colony, Post
-                                    Office: Amin Jute Mills-4211, Panchlaish, Chittagong City Corporation,
-                                    Chittagong.</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php } ?>
         </div>
     </div>
 

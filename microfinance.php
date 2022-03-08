@@ -1,3 +1,128 @@
+<?php
+include "dbConnection.php";
+
+	$query = "SELECT number FROM `members` WHERE type='m'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mmale = $temp['number']; 
+
+	$query = "SELECT number FROM `members` WHERE type='f'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mfemale = $temp['number'];
+
+	$query = "SELECT number FROM `members` WHERE type='t'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mtotal = $temp['number'];
+
+	$query = "SELECT number FROM `borrowers` WHERE type='m'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$bmale = $temp['number']; 
+
+	$query = "SELECT number FROM `borrowers` WHERE type='f'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$bfemale = $temp['number'];
+
+	$query = "SELECT number FROM `borrowers` WHERE type='t'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$btotal = $temp['number'];
+
+	$query = "SELECT number FROM `savings` WHERE type='compulsory'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$scompulsory = $temp['number'];
+
+	$query = "SELECT number FROM `savings` WHERE type='voluntary'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$svoluntary = $temp['number'];
+
+	$query = "SELECT number FROM `savings` WHERE type='total'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$stotal = $temp['number'];
+
+	$query = "SELECT number FROM `savings` WHERE type='term'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$sterm = $temp['number'];
+
+	$query = "SELECT number FROM `loans` WHERE type='general'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lgeneral = $temp['number'];
+
+	$query = "SELECT number FROM `loans` WHERE type='micro'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lmicro = $temp['number'];
+
+	$query = "SELECT number FROM `loans` WHERE type='agriculture'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lagriculture = $temp['number'];
+
+	$query = "SELECT number FROM `loans` WHERE type='others'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lothers = $temp['number'];
+
+	$query = "SELECT number FROM `loans` WHERE type='total'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$ltotal = $temp['number'];
+
+	$query = "SELECT number FROM `loanOut` WHERE type='general'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$logeneral = $temp['number'];
+
+	$query = "SELECT number FROM `loanOut` WHERE type='micro'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lomicro = $temp['number'];
+
+	$query = "SELECT number FROM `loanOut` WHERE type='agriculture'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$loagriculture = $temp['number'];
+
+	$query = "SELECT number FROM `loanOut` WHERE type='others'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$loothers = $temp['number'];
+
+	$query = "SELECT number FROM `loanOut` WHERE type='total'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$lototal = $temp['number'];
+
+?>
+
 <html lang="en">
 
 <head>
@@ -204,17 +329,17 @@
 						<tr>
 							<td>
 								<h5 style="color: #990000;">Male Borrowers</h4>
-								<p style="font-size: 18px; font-weight: bold;">1847</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $bmale ?> </p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Female Borrowers</h4>
-								<p style="font-size: 18px; font-weight: bold;">4890</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $bfemale ?> </p>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<h5 style="color: #990000;">Total Borrowers</h4>
-								<p style="font-size: 18px; font-weight: bold;">6737</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $btotal ?> </p>
 							</td>
 						</tr>
 					</tbody>
@@ -232,17 +357,17 @@
 						<tr>
 							<td>
 								<h5 style="color: #990000;">Male members</h4>
-								<p style="font-size: 18px; font-weight: bold;">2684</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $mmale ?> </p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Female members</h4>
-								<p style="font-size: 18px; font-weight: bold;">7402</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $mfemale ?> </p>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<h5 style="color: #990000;">Total members</h4>
-								<p style="font-size: 18px; font-weight: bold;">10086</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $mtotal ?> </p>
 							</td>
 						</tr>
 					</tbody>
@@ -260,21 +385,21 @@
 						<tr>
 							<td>
 								<h5 style="color: #990000;">Compulsory</h4>
-								<p style="font-size: 18px; font-weight: bold;">173277068</p>
+								<p style="font-size: 18px; font-weight: bold;"> <?php echo $scompulsory ?> </p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Voluntary</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $svoluntary ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Term</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $sterm ?></p>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="3">
 								<h5 style="color: #990000;">Total</h4>
-								<p style="font-size: 18px; font-weight: bold;">173277068</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $stotal ?></p>
 							</td>
 						</tr>
 					</tbody>
@@ -296,25 +421,25 @@
 						<tr>
 							<td>
 								<h5 style="color: #990000;">General Microcredit</h4>
-								<p style="font-size: 18px; font-weight: bold;">251185000</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lgeneral ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Micro Enterprise</h4>
-								<p style="font-size: 18px; font-weight: bold;">5835000</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lmicro ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Agriculture Loan</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lagriculture ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Others</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lothers ?></p>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="4">
 								<h5 style="color: #990000;">Total</h4>
-								<p style="font-size: 18px; font-weight: bold;">257020000</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $ltotal ?></p>
 							</td>
 						</tr>
 					</tbody>
@@ -332,25 +457,25 @@
 						<tr>
 							<td>
 								<h5 style="color: #990000;">General Microcredit</h4>
-								<p style="font-size: 18px; font-weight: bold;">188648164</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $logeneral ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Micro Enterprise</h4>
-								<p style="font-size: 18px; font-weight: bold;">53730553</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lomicro ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Agriculture Loan</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $loagriculture ?></p>
 							</td>
 							<td>
 								<h5 style="color: #990000;">Others</h4>
-								<p style="font-size: 18px; font-weight: bold;">0</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $loothers ?></p>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="4">
 								<h5 style="color: #990000;">Total</h4>
-								<p style="font-size: 18px; font-weight: bold;">242378717</p>
+								<p style="font-size: 18px; font-weight: bold;"><?php echo $lototal ?></p>
 							</td>
 						</tr>
 					</tbody>

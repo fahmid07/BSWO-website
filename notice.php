@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -64,7 +69,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="gallery.html" style="color: #990000;">Gallery</a>
+                            <a class="nav-link" href="gallery.html">Gallery</a>
                         </li>
 
                         <li class="nav-item">
@@ -72,7 +77,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="notice.html">Notice</a>
+                            <a class="nav-link" href="notice.html" style="color: #990000;">Notice</a>
                         </li>
 
                         <li class="nav-item">
@@ -109,13 +114,39 @@
 
     <div class="container">
         <div class="row justify-content-center text-center">
-            <h2 class="mb-3 font-weight-bold">Gallery</h2>
+            <h2 class="mb-3 font-weight-bold">Notice</h2>
             <hr allign="center"
                 style="height:6px; width:8%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
         </div>
     </div>
 
-
+    <div class="container-fluid">
+            <?php
+                $query = "SELECT * FROM `notice`";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
+        <div class="row my-4">
+            <div class="col">
+                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
+                    5px;">
+                    <div class="row">
+                        <div class="col-lg-10 text-start">
+                            <h4 style="color: #990000; font-weight: bold;"><?php echo $row['title']?></h4>
+                            <p style="color: #7A7A8F; font-weight: 500;">
+                            <?php echo $row['details']?>
+                            </p>
+                        </div>
+                        <div class="col-lg-2">
+                            <br>
+                            <a href="others.html" class="btn btn-success" style="float: right;">Click For Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
 
     <footer class="text-white py-3 mt-5" style="background-color: #9C344A;">
 

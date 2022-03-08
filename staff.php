@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -118,133 +123,44 @@
 
     <div class="container">
         <div class="row m-2">
+            <?php
+                $query = "SELECT * FROM `employee` ORDER BY `employee`.`E_CODE` ASC";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
             <div class="col-lg-4 mb-4">
                 <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
                     5px;">
                     <div class="row mb-3">
                         <div class="col-6">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="img-thumbnail"
+                            <img src="images/employee/<?php echo $row['E_IMAGE']?>" alt="image" class="img-thumbnail"
                                 style="width: 150px; height: 150px;">
                         </div>
                         <div class="col-6">
                             <br>
                             <br>
-                            <h5 style="font-weight: bold;">Rezia Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Executive Director</h6>
+                            <h5 style="font-weight: bold;"><?php echo $row['E_NAME']?></h5>
+                            <h6 style="color: #7A7A87; font-weight: 600;"><?php echo $row['E_POST']?></h6>
                         </div>
                     </div>
                     <div class="row bg-light">
                         <div class="col-6">
                             <h6 style="color: #990000; font-weight: bold;">Joining Date</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">January 1, 1999</p>
+                            <p style="color: #7A7A87; font-weight: 600;"> <?php echo $row['E_SDATE']?> </p>
                             <h6 style="color: #990000; font-weight: bold;">NID Card No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">159560744259</p>
+                            <p style="color: #7A7A87; font-weight: 600;"><?php echo $row['E_NID']?></p>
                         </div>
                         <div class="col-6">
                             <h6 style="color: #990000; font-weight: bold;">Blood Group</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">A (positive)</p>
+                            <p style="color: #7A7A87; font-weight: 600;"><?php echo $row['E_BG']?></p>
                             <h6 style="color: #990000; font-weight: bold;">Mobile No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">01713-102547</p>
+                            <p style="color: #7A7A87; font-weight: 600;"><?php echo $row['E_MOBILE']?></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    5px;">
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="img-thumbnail"
-                                style="width: 150px; height: 150px;">
-                        </div>
-                        <div class="col-6">
-                            <br>
-                            <br>
-                            <h5 style="font-weight: bold;">Rezia Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Executive Director</h6>
-                        </div>
-                    </div>
-                    <div class="row bg-light">
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Joining Date</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">January 1, 1999</p>
-                            <h6 style="color: #990000; font-weight: bold;">NID Card No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">159560744259</p>
-                        </div>
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Blood Group</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">A (positive)</p>
-                            <h6 style="color: #990000; font-weight: bold;">Mobile No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">01713-102547</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    5px;">
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="img-thumbnail"
-                                style="width: 150px; height: 150px;">
-                        </div>
-                        <div class="col-6">
-                            <br>
-                            <br>
-                            <h5 style="font-weight: bold;">Rezia Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Executive Director</h6>
-                        </div>
-                    </div>
-                    <div class="row bg-light">
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Joining Date</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">January 1, 1999</p>
-                            <h6 style="color: #990000; font-weight: bold;">NID Card No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">159560744259</p>
-                        </div>
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Blood Group</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">A (positive)</p>
-                            <h6 style="color: #990000; font-weight: bold;">Mobile No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">01713-102547</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    5px;">
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <img src="images/homer-simpson-150x150.jpg" alt="image" class="img-thumbnail"
-                                style="width: 150px; height: 150px;">
-                        </div>
-                        <div class="col-6">
-                            <br>
-                            <br>
-                            <h5 style="font-weight: bold;">Rezia Begum</h5>
-                            <h6 style="color: #7A7A87; font-weight: 600;">Executive Director</h6>
-                        </div>
-                    </div>
-                    <div class="row bg-light">
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Joining Date</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">January 1, 1999</p>
-                            <h6 style="color: #990000; font-weight: bold;">NID Card No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">159560744259</p>
-                        </div>
-                        <div class="col-6">
-                            <h6 style="color: #990000; font-weight: bold;">Blood Group</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">A (positive)</p>
-                            <h6 style="color: #990000; font-weight: bold;">Mobile No</h6>
-                            <p style="color: #7A7A87; font-weight: 600;">01713-102547</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 

@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -117,49 +122,23 @@
 
     <div class="container">
         <div class="row m-2">
+            <?php
+                $query = "SELECT * FROM `download`";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
             <div class="col-lg-4 mb-4">
                 <div class="card text-center">
-                    <img class="card-img-top mb-2" src="images/download.png" alt="image"
+                    <img class="card-img-top mb-2" src="images/report/<?php echo $row['image']?>" alt="image"
                         style="height: 12rem; object-fit: cover; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
                     <div class="card-body">
-                        <h2 class="card-title">Download Title</h2>
-                        <a href="#" class="btn btn-success mt-2">Download</a>
+                        <h2 class="card-title"><?php echo $row['title']?></h2>
+                        <a href="<?php echo $row['link']?>" class="btn btn-success mt-2">Download</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center">
-                    <img class="card-img-top mb-2" src="images/download.png" alt="image"
-                        style="height: 12rem; object-fit: cover; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
-                    <div class="card-body">
-                        <h2 class="card-title">Download Title</h2>
-                        <a href="#" class="btn btn-success mt-2">Download</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center">
-                    <img class="card-img-top mb-2" src="images/download.png" alt="image"
-                        style="height: 12rem; object-fit: cover; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
-                    <div class="card-body">
-                        <h2 class="card-title">Download Title</h2>
-                        <a href="#" class="btn btn-success mt-2">Download</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center">
-                    <img class="card-img-top mb-2" src="images/download.png" alt="image"
-                        style="height: 12rem; object-fit: cover; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
-                    <div class="card-body">
-                        <h2 class="card-title">Download Title</h2>
-                        <a href="#" class="btn btn-success mt-2">Download</a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
+            
         </div>
     </div>
 

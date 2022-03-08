@@ -1,3 +1,44 @@
+<?php
+include "dbConnection.php";
+
+	$query = "SELECT number FROM `members` WHERE type='m'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mmale = $temp['number']; 
+
+	$query = "SELECT number FROM `members` WHERE type='f'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mfemale = $temp['number'];
+
+	$query = "SELECT number FROM `members` WHERE type='t'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$mtotal = $temp['number'];
+
+	$query = "SELECT number FROM `borrowers` WHERE type='m'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$bmale = $temp['number']; 
+
+	$query = "SELECT number FROM `borrowers` WHERE type='f'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$bfemale = $temp['number'];
+
+	$query = "SELECT number FROM `borrowers` WHERE type='t'";
+	$getres = mysqli_query($conn, $query);
+
+	$temp = mysqli_fetch_array($getres);
+	$btotal = $temp['number'];
+
+?>
+
 <html lang="en">
 
 <head>
@@ -16,7 +57,7 @@
 	<header class="header">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand ms-lg-5 ps-lg-5 pb-lg-0" href="home.html">
+				<a class="navbar-brand ms-lg-3 ps-lg-3 pb-lg-0" href="home.php">
 					<img src="images/logo1.png" style="width: 240px; height:135px" alt="logo" class="logo">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -28,7 +69,7 @@
 				<div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="min-width: 1000px;">
 						<li class="nav-item active">
-							<a class="nav-link" href="home.html">Home</a>
+							<a class="nav-link" href="home.php">Home</a>
 						</li>
 
 						<li class="nav-item">
@@ -41,9 +82,9 @@
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline-flex;">
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" href="executive_committee.html">Executive Committee</a></li>
-								<li><a class="dropdown-item" href="general_committee.html">General Committee</a></li>
-								<li><a class="dropdown-item" href="staff.html">Officers and staff</a></li>
+								<li><a class="dropdown-item" href="executive_committee.php">Executive Committee</a></li>
+								<li><a class="dropdown-item" href="general_committee.php">General Committee</a></li>
+								<li><a class="dropdown-item" href="staff.php">Officers and staff</a></li>
 							</ul>
 						</li>
 
@@ -53,21 +94,21 @@
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline-flex;">
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" href="microfinance.html">Microfinance</a></li>
+								<li><a class="dropdown-item" href="microfinance.php">Microfinance</a></li>
 								<li><a class="dropdown-item" href="others.html">Others</a></li>
 							</ul>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="gallery.html">Gallery</a>
+							<a class="nav-link" href="gallery.php">Gallery</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="download.html">Download</a>
+							<a class="nav-link" href="download.php">Download</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="notice.html">Notice</a>
+							<a class="nav-link" href="notice.php">Notice</a>
 						</li>
 
 						<li class="nav-item">
@@ -81,19 +122,18 @@
 					</ul>
 					<ul class="navbar-nav ms-auto me-lg-5 pe-lg-5" style="font-size: 30px;">
 						<li class="nav-item px-2" >
-							<a href="https://www.behance.net/fahmid07" style="color:#3b5998;"> <i class="fa fa-facebook-square"></i> </a>
+							<a href="https://www.facebook.com/BSWO.org/" style="color:#3b5998;"> <i class="fa fa-facebook-square"></i> </a>
 						</li>
 						<li class="nav-item px-2">
-							<a href="https://www.instagram.com/fahmid_orpon/" style="color:	#1DA1F2;"> <i
+							<a href="https://twitter.com/bswo.org" style="color:	#1DA1F2;"> <i
                                 class="fab fa-twitter"></i> </a>
 						</li>
 						<li class="nav-item px-2">
-							<a href="https://www.facebook.com/fahmidorpon07/" style="color:#0077b5;"> <i
+							<a href="https://www.linkedin.com/in/bswo" style="color:#0077b5;"> <i
                                 class="fab fa-linkedin-in"></i> </a>
 						</li>
                         <li class="nav-item px-2">
-							<a href="https://www.facebook.com/fahmidorpon07/" style="color:	#FF0000;"> <i
-                                class="fab fa-youtube"></i> </a>
+							<a href="admin_dashboard.php" style="color:	#FF0000;"> <i class="fa-solid fa-user"></i> </a>
 						</li>
 					</ul>
 				</div>
@@ -328,7 +368,7 @@
 		<div class="col-auto" style="width: 28rem; ">
 			<div class="card border-success" style="width: 25rem;">
 				<div class="card-body">
-					<h1 class="card-title" style="color:#990000;"> 4890 </h1>
+					<h1 class="card-title" style="color:#990000;"> <?php echo $bfemale ?> </h1>
 				  <p class="card-text" style="font-size: 20px; font-weight: bold; color:gray;"> Female borrowers </p>
 				</div>
 			</div>
@@ -337,7 +377,7 @@
 		<div class="col-auto" style="width: 28rem;">
 			<div class="card border-success" style="width: 25rem;">
 				<div class="card-body">
-					<h1 class="card-title" style="color:#990000;"> 1847 </h1>
+					<h1 class="card-title" style="color:#990000;"> <?php echo $bmale ?> </h1>
 				    <p class="card-text" style="font-size: 20px; font-weight: bold; color:gray;"> Male borrowers</p>
 				</div>
 			</div>
@@ -346,7 +386,7 @@
 		<div class="col-auto" style="width: 28rem;">
 			<div class="card border-success" style="width: 25rem;">
 				<div class="card-body">
-					<h1 class="card-title" style="color:#990000;"> 6737 </h1>
+					<h1 class="card-title" style="color:#990000;"> <?php echo $btotal ?> </h1>
 				    <p class="card-text" style="font-size: 20px; font-weight: bold; color:gray;"> Total borrowers</p>
 				</div>
 			</div>
@@ -395,7 +435,7 @@
 				<div class="row justify-content-center text-center mt-5" style="font-size: 20px;">
 					<div class="card bg-light border-0" style="width: 15rem;">
 						<div class="card-body fw-bold">
-							<h5 class="card-title" style="color:#990000; font-size: 30px;">2684</h5>
+							<h5 class="card-title" style="color:#990000; font-size: 30px;"> <?php echo $mmale ?> </h5>
 							<p class="card-text" style="color:#4f4f4f;">Male Members</p>
 						</div>
 					</div>
@@ -404,13 +444,13 @@
 						<div class="card-body fw-bold">
 							<br>
 							<br>
-							<h5 class="card-title" style="color:#990000; font-size: 35px;">10086</h5>
+							<h5 class="card-title" style="color:#990000; font-size: 35px;"> <?php echo $mtotal ?> </h5>
 							<p class="card-text" style="color:#4f4f4f;">Total Members</p>
 						</div>
 					</div>
 					<div class="card bg-light border-0" style="width: 15rem;">
 						<div class="card-body fw-bold">
-							<h5 class="card-title" style="color:#990000; font-size: 30px;">7802</h5>
+							<h5 class="card-title" style="color:#990000; font-size: 30px;"> <?php echo $mfemale ?> </h5>
 							<p class="card-text" style="color:#4f4f4f;">Female Members</p>
 						</div>
 					</div>
@@ -460,20 +500,20 @@
 
 					<ul class="list-unstyled list-inline">
 						<li class="list-inline-item">
-							<a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+							<a href="https://www.facebook.com/BSWO.org/" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
 									class="fab fa-facebook"></i></a>
 						</li>
 						<li class="list-inline-item">
-							<a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+							<a href="https://twitter.com/bswo.org" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
 									class="fab fa-twitter"></i></a>
 						</li>
 						<li class="list-inline-item">
-							<a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+							<a href="https://www.linkedin.com/in/bswo" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
 									class="fab fa-linkedin-in"></i></a>
 						</li>
 						<li class="list-inline-item">
-							<a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
-									class="fab fa-youtube"></i></a>
+							<a href="admin_dashboard.php" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+									class="fa-solid fa-user"></i></a>
 						</li>
 					</ul>
 
@@ -487,21 +527,21 @@
 						<br>
 						<a href="about.html" class="text-white" style="text-decoration: none;"> About Us</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Banaful Family</a>
+						<a href="staff.php" class="text-white" style="text-decoration: none;"> Banaful Family</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Executive Council</a>
+						<a href="executive_committee.php" class="text-white" style="text-decoration: none;"> Executive Council</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> General Assembly</a>
+						<a href="general_committee.php" class="text-white" style="text-decoration: none;"> General Assembly</a>
 						<br>
 						<a href="activities.html" class="text-white" style="text-decoration: none;"> Activities</a>
 						<br>
-						<a href="microfinance.html" class="text-white" style="text-decoration: none;"> Microfinance</a>
+						<a href="microfinance.php" class="text-white" style="text-decoration: none;"> Microfinance</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Gallery</a>
+						<a href="gallery.php" class="text-white" style="text-decoration: none;"> Gallery</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Download</a>
+						<a href="download.php" class="text-white" style="text-decoration: none;"> Download</a>
 						<br>
-						<a href="#" class="text-white" style="text-decoration: none;"> Notice</a>
+						<a href="notice.php" class="text-white" style="text-decoration: none;"> Notice</a>
 						<br>
 						<a href="contact.html" class="text-white" style="text-decoration: none;"> Contact</a>
 					</p>

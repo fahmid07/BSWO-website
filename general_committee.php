@@ -1,3 +1,8 @@
+<?php
+include "dbConnection.php";
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -45,8 +50,10 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="executive_committee.html">Executive Committee</a></li>
-                                <li><a class="dropdown-item" href="general_committee.html">General Committee</a></li>
-                                <li><a class="dropdown-item" href="staff.html">Officers and staff</a></li>
+                                <li><a class="dropdown-item" href="general_committee.html"
+                                        style="color: #990000;">General Committee</a></li>
+                                <li><a class="dropdown-item" href="staff.html">Officers and
+                                        staff</a></li>
                             </ul>
                         </li>
 
@@ -72,7 +79,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="notice.html" style="color: #990000;">Notice</a>
+                            <a class="nav-link" href="notice.html">Notice</a>
                         </li>
 
                         <li class="nav-item">
@@ -109,55 +116,47 @@
 
     <div class="container">
         <div class="row justify-content-center text-center">
-            <h2 class="mb-3 font-weight-bold">Notice</h2>
+            <h2 class="mb-3 font-weight-bold">General Committee</h2>
             <hr allign="center"
                 style="height:6px; width:8%; background-color:#990000; margin-top: 3px; margin-bottom:20px;">
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row my-4">
-            <div class="col">
-                <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    5px;">
-                    <div class="row">
-                        <div class="col-lg-10 text-start">
-                            <h4 style="color: #990000; font-weight: bold;">Notice Title</h4>
-                            <p style="color: #7A7A8F; font-weight: 500;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Voluptatum,
-                                quisquam. Quidem, quisquam. Quidem, quisquam. Quidem, quisquam.
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <br>
-                            <a href="#" class="btn btn-success" style="float: right;">Click For Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="row m-2">
 
-        <div class="row my-4">
-            <div class="col">
+            <?php
+                $query = "SELECT * FROM `general_committee` ORDER BY `general_committee`.`GC_CODE` ASC";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+            ?>
+
+            <div class="col-lg-6 mb-4">
                 <div class="container p-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
-                    5px;">
-                    <div class="row">
-                        <div class="col-lg-10 text-start">
-                            <h4 style="color: #990000; font-weight: bold;">Notice Title</h4>
-                            <p style="color: #7A7A8F; font-weight: 500;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Voluptatum,
-                                quisquam. Quidem, quisquam. Quidem, quisquam. Quidem, quisquam. Quidem, quisquam.
-                            </p>
+                    15px;">
+                    <div class="row mt-3">
+                        <div class="col-lg-4">
+                            <img src="images/general/<?php echo $row['GC_IMAGE']?>" alt="image" class="mb-4" style="width: 200px; height: 200px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:
+                            15px;">
                         </div>
-                        <div class="col-lg-2">
-                            <br>
-                            <a href="#" class="btn btn-success" style="float: right;">Click For Details</a>
+                        <div class="col-lg-8 text-start ps-5">
+                            <h5 style="font-weight: bold;"><?php echo $row['GC_IMAGE']?></h5>
+                            <h6 style="color: #7A7A87; font-weight: 600;"><?php echo $row['GC_POST']?></h6>
+                            <hr allign="center"
+                                style="height:3px; width:15%; background-color:#990000; margin-top: 4px; margin-bottom:20px;">
+                            <p style="color: #0da026; font-weight: bold;">Occupation&nbsp;&nbsp;&nbsp;<span
+                                    style="color: #7A7A87; font-weight: 600;"><?php echo $row['GC_OCCUP']?></span></p>
+                            <p style="color: #0da026; font-weight: bold;">Educational
+                                Qualification&nbsp;&nbsp;&nbsp;<span style="color: #7A7A87; font-weight: 600;"><?php echo $row['GC_EDU']?></span></p>
+                            <p style="color: #0da026; font-weight: bold;">Address&nbsp;&nbsp;&nbsp;<span
+                                    style="color: #7A7A87; font-weight: 600;"><?php echo $row['GC_ADDRESS']?></span></p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <?php } ?>
+
         </div>
     </div>
 
