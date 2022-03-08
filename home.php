@@ -133,7 +133,7 @@ include "dbConnection.php";
                                 class="fab fa-linkedin-in"></i> </a>
 						</li>
                         <li class="nav-item px-2">
-							<a href="admin_dashboard.php" style="color:	#FF0000;"> <i class="fa-solid fa-user"></i> </a>
+							<a href="login.php" style="color:	#FF0000;"> <i class="fa-solid fa-user"></i> </a>
 						</li>
 					</ul>
 				</div>
