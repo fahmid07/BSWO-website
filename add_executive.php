@@ -103,7 +103,7 @@ include "dbConnection.php";
     ?>
             <script type="text/javascript">
                 alert("Succesfully Added!")
-                //window.location.href = "admin_course.php"
+                window.location.href = "admin_dashboard.php"
             </script>
         <?php
         }
@@ -114,7 +114,7 @@ include "dbConnection.php";
     } else {
         ?>
         <script type="text/javascript">
-            alert("Please Upload Image!!");
+            //alert("Please Upload Image!!");
         </script>
 
     <?php

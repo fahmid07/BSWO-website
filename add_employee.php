@@ -98,7 +98,7 @@ include "dbConnection.php";
     if (isset($_POST["submit"]) and isset($_FILES["image"])) {
         $target = "images/employee/" . basename($_FILES["image"]["name"]);
         $imageFile = $_FILES["image"]["name"];
-        echo  $imageFile;
+        //echo  $imageFile;
         $E_NAME = $_POST["E_NAME"];
         $E_POST = $_POST["E_POST"];
         $E_BG = $_POST["E_BG"];
@@ -113,7 +113,7 @@ include "dbConnection.php";
     ?>
             <script type="text/javascript">
                 alert("Succesfully Added Employee!")
-                //window.location.href = "admin_course.php"
+                window.location.href = "admin_dashboard.php"
             </script>
         <?php
         }
@@ -124,7 +124,7 @@ include "dbConnection.php";
     } else {
         ?>
         <script type="text/javascript">
-            alert("Please Upload Image!!");
+            //alert("Please Upload Image!!");
         </script>
 
     <?php

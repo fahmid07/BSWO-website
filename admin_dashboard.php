@@ -25,28 +25,67 @@ include "dbConnection.php";
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin_course.php">
-              Courses
+            <a class="nav-link" href="add_employee.php">
+              Employees
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin_feedbacks.php">
-              Feedbacks
+            <a class="nav-link" href="add_general.php">
+             General Committee 
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin_student.php">
-              Student List
+            <a class="nav-link" href="add_executive.php">
+              Executive Committee
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin_teacher.php">
-              Instructor
+            <a class="nav-link" href="add_notice.php">
+              Notice
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php">
-              Logout
+            <a class="nav-link" href="add_file.php">
+              Download
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="add_image.php">
+              Gallery
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="edit_borrowers.php">
+              Borrowers
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="edit_members.php">
+              Members
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="edit_savings.php">
+              Savings
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="edit_loans.php">
+              Loan Disbursement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="edit_loanout.php">
+              Loan Outstanding
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.php">
+              Log Out
             </a>
           </li>
         </ul>
@@ -54,9 +93,6 @@ include "dbConnection.php";
 
       </div>
     </nav>
-    <!-- Endvartical navbar -->
-
-    <!-- Dashboard Student and course -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
         <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -101,7 +137,38 @@ include "dbConnection.php";
               echo "<td>"; echo $row["E_MOBILE"]; echo "</td>";
               echo "<td>"; echo $row["E_CODE"]; echo "</td>";
               echo "<td>"; echo $row["E_IMAGE"]; echo "</td>";
-              echo "<td>"; ?> <a class ="btnId" href ="edit_employee.php?id=<?php echo $row["E_CODE"]?>">Edit</a> Or <a class ="btnId" href="course_delete.php?id=<?php echo $row["E_CODE"]?>">Deletes</a> <?php echo "</td>";
+              echo "<td>"; ?> <a class ="btnId" href ="edit_employee.php?id=<?php echo $row["E_CODE"]?>">Edit</a> Or <a class ="btnId" href="delete_employee.php?id=<?php echo $row["E_CODE"]?>">Deletes</a> <?php echo "</td>";
+              echo "</tr>";
+            }          
+            ?>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Notice</h2>
+      <div style="text-align: center;"  class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Notice Id</th>
+              <th>Details</th>
+              <th>Image</th>
+              <th>Date</th>           
+            </tr>
+          </thead>
+          <tbody  style="margin-top:5px">
+
+          <?php         
+            $rs = mysqli_query($conn,"SELECT * FROM `notice`");
+            while($row = mysqli_fetch_array($rs)){
+              echo "<tr>";
+              echo "<td>"; echo $row["title"]; echo "</td>";
+              echo "<td>"; echo $row["notice_id"]; echo "</td>";
+              echo "<td>"; echo $row["details"]; echo "</td>"; 
+              echo "<td>"; echo $row["image"]; echo "</td>"; 
+              echo "<td>"; echo $row["date"]; echo "</td>";
+              echo "<td>"; ?> <a class ="btnId" href ="edit_notice.php?id=<?php echo $row["notice_id"]?>">Edit</a> Or <a class ="btnId" href="delete_notice.php?id=<?php echo $row["notice_id"]?>">Delete</a> <?php echo "</td>";
               echo "</tr>";
             }          
             ?>
