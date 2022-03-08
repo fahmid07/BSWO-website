@@ -15,13 +15,29 @@ include "dbConnection.php";
 </head>
 
 <body>
+
+  <?php
+  session_start();
+
+  if (isset($_POST['logout'])) {
+    session_destroy();
+    header("location: login.php");
+  }
+
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $user = $_SESSION['username'];
+  } else {
+    die("You are not logged in!");
+  }
+  ?>
+
   <div class="row">
     <nav style="padding-top: 80px;" class="col-md-2 d-none d-md-block  sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item ">
-            <a style="color: black" class="nav-link bg-warning active" href="admin_dasboard.php">             
-               Dashboard <span class="sr-only">(current)</span>
+            <a style="color: black" class="nav-link bg-warning active" href="admin_dasboard.php">
+              Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
@@ -31,7 +47,7 @@ include "dbConnection.php";
           </li>
           <li class="nav-item">
             <a class="nav-link" href="add_general.php">
-             General Committee 
+              General Committee
             </a>
           </li>
           <li class="nav-item">
@@ -85,8 +101,15 @@ include "dbConnection.php";
           </li>
           <li class="nav-item">
             <a class="nav-link" href="home.php">
-              Log Out
+              BSWO Home
             </a>
+          </li>
+          <li class="nav-item">
+            <div class="container">
+              <form action='admin_dashboard.php' method='post'>
+                <input type='submit' name='logout' value='Logout' class="btn btn-success">
+              </form>
+            </div>
           </li>
         </ul>
 
@@ -107,76 +130,103 @@ include "dbConnection.php";
 
       </div>
       <div class="row">
-      <h2>Employees</h2>
-      <div style="text-align: center;"  class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>Employee Name</th>
-              <th>Post</th>
-              <th>Blood Group</th>
-              <th>Joining Date</th>
-              <th>NID</th>
-              <th>Mobile</th>
-              <th>Employee Code</th>
-              <th>Image</th>
-             
-            </tr>
-          </thead>
-          <tbody  style="margin-top:5px">
+        <h2>Employees</h2>
+        <div style="text-align: center;" class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Employee Name</th>
+                <th>Post</th>
+                <th>Blood Group</th>
+                <th>Joining Date</th>
+                <th>NID</th>
+                <th>Mobile</th>
+                <th>Employee Code</th>
+                <th>Image</th>
 
-          <?php         
-            $rs = mysqli_query($conn,"SELECT * FROM `employee`");
-            while($row = mysqli_fetch_array($rs)){
-              echo "<tr>";
-              echo "<td>"; echo $row["E_NAME"]; echo "</td>";
-              echo "<td>"; echo $row["E_POST"]; echo "</td>";
-              echo "<td>"; echo $row["E_BG"]; echo "</td>"; 
-              echo "<td>"; echo $row["E_SDATE"]; echo "</td>"; 
-              echo "<td>"; echo $row["E_NID"]; echo "</td>"; 
-              echo "<td>"; echo $row["E_MOBILE"]; echo "</td>";
-              echo "<td>"; echo $row["E_CODE"]; echo "</td>";
-              echo "<td>"; echo $row["E_IMAGE"]; echo "</td>";
-              echo "<td>"; ?> <a class ="btnId" href ="edit_employee.php?id=<?php echo $row["E_CODE"]?>">Edit</a> Or <a class ="btnId" href="delete_employee.php?id=<?php echo $row["E_CODE"]?>">Deletes</a> <?php echo "</td>";
-              echo "</tr>";
-            }          
-            ?>
-          </tbody>
-        </table>
-      </div>
+              </tr>
+            </thead>
+            <tbody style="margin-top:5px">
 
-      <h2>Notice</h2>
-      <div style="text-align: center;"  class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Notice Id</th>
-              <th>Details</th>
-              <th>Image</th>
-              <th>Date</th>           
-            </tr>
-          </thead>
-          <tbody  style="margin-top:5px">
+              <?php
+              $rs = mysqli_query($conn, "SELECT * FROM `employee`");
+              while ($row = mysqli_fetch_array($rs)) {
+                echo "<tr>";
+                echo "<td>";
+                echo $row["E_NAME"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_POST"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_BG"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_SDATE"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_NID"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_MOBILE"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_CODE"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["E_IMAGE"];
+                echo "</td>";
+                echo "<td>"; ?> <a class="btnId" href="edit_employee.php?id=<?php echo $row["E_CODE"] ?>">Edit</a> Or <a class="btnId" href="delete_employee.php?id=<?php echo $row["E_CODE"] ?>">Deletes</a> <?php echo "</td>";
+                                                                                                                                                                                                              echo "</tr>";
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                              ?>
+            </tbody>
+          </table>
+        </div>
 
-          <?php         
-            $rs = mysqli_query($conn,"SELECT * FROM `notice`");
-            while($row = mysqli_fetch_array($rs)){
-              echo "<tr>";
-              echo "<td>"; echo $row["title"]; echo "</td>";
-              echo "<td>"; echo $row["notice_id"]; echo "</td>";
-              echo "<td>"; echo $row["details"]; echo "</td>"; 
-              echo "<td>"; echo $row["image"]; echo "</td>"; 
-              echo "<td>"; echo $row["date"]; echo "</td>";
-              echo "<td>"; ?> <a class ="btnId" href ="edit_notice.php?id=<?php echo $row["notice_id"]?>">Edit</a> Or <a class ="btnId" href="delete_notice.php?id=<?php echo $row["notice_id"]?>">Delete</a> <?php echo "</td>";
-              echo "</tr>";
-            }          
-            ?>
-          </tbody>
-        </table>
-      </div>
+        <h2>Notice</h2>
+        <div style="text-align: center;" class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Notice Id</th>
+                <th>Details</th>
+                <th>Image</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody style="margin-top:5px">
+
+              <?php
+              $rs = mysqli_query($conn, "SELECT * FROM `notice`");
+              while ($row = mysqli_fetch_array($rs)) {
+                echo "<tr>";
+                echo "<td>";
+                echo $row["title"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["notice_id"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["details"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["image"];
+                echo "</td>";
+                echo "<td>";
+                echo $row["date"];
+                echo "</td>";
+                echo "<td>"; ?> <a class="btnId" href="edit_notice.php?id=<?php echo $row["notice_id"] ?>">Edit</a> Or <a class="btnId" href="delete_notice.php?id=<?php echo $row["notice_id"] ?>">Delete</a> <?php echo "</td>";
+                                                                                                                                                                                                                echo "</tr>";
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                                ?>
+            </tbody>
+          </table>
+        </div>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>

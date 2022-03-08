@@ -73,7 +73,7 @@ include "dbConnection.php";
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="about.html">About Us</a>
+							<a class="nav-link" href="about.php">About Us</a>
 						</li>
 
 						<li class="nav-item dropdown">
@@ -89,13 +89,13 @@ include "dbConnection.php";
 						</li>
 
 						<li class="nav-item dropdown">
-							<a href="activities.html" style="text-decoration: none; display: inline-flex; margin-top: 0.2rem; margin-left: 1rem;">Activities</a>
+							<a href="activities.php" style="text-decoration: none; display: inline-flex; margin-top: 0.2rem; margin-left: 1rem;">Activities</a>
 							<a class="nav-link dropdown-toggle ps-0" href="#" id="navbarDropdownMenuLink"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline-flex;">
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<li><a class="dropdown-item" href="microfinance.php">Microfinance</a></li>
-								<li><a class="dropdown-item" href="others.html">Others</a></li>
+								<li><a class="dropdown-item" href="others.php">Others</a></li>
 							</ul>
 						</li>
 
@@ -112,7 +112,7 @@ include "dbConnection.php";
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+							<a class="nav-link" href="contact.php">Contact</a>
 						</li>
 
 						<li class="nav-item">
@@ -194,7 +194,7 @@ include "dbConnection.php";
 						</span> &nbsp; Dream</h2>
 					<p class="card-text">We dream of a society where all the men and women of our future generations
 						live in a legal, social and economic environment free from all forms of discrimination.</p>
-					<a href="about.html.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
+					<a href="about.php.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
 				</div>
 			</div>
 		</div>
@@ -208,7 +208,7 @@ include "dbConnection.php";
 					<p class="card-text">Based on the organization's capabilities, skills, experience, and available
 						external financial and technical support among the target population and the needs of the target
 						population.</p>
-					<a href="about.html.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
+					<a href="about.php.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
 				</div>
 			</div>
 		</div>
@@ -222,7 +222,7 @@ include "dbConnection.php";
 					<p class="card-text">Banaful is a social welfare organization. The ultimate goal of this
 						organization is to improve the quality of life of the underprivileged, disadvantaged and poor
 						people, especially children and women.</p>
-					<a href="about.html.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
+					<a href="about.php.#dreamMissionGoal" class="btn btn-success">Click to know more</a>
 				</div>
 			</div>
 		</div>
@@ -512,7 +512,7 @@ include "dbConnection.php";
 									class="fab fa-linkedin-in"></i></a>
 						</li>
 						<li class="list-inline-item">
-							<a href="admin_dashboard.php" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+							<a href="login.php" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
 									class="fa-solid fa-user"></i></a>
 						</li>
 					</ul>
@@ -523,17 +523,17 @@ include "dbConnection.php";
 				<div class="col-md-2 col-lg-2 col-xl-4 mx-auto mt-3" style="padding: 0rem 4rem;">
 					<h5 class="text-uppercase mb-3 font-weight-bold">Menu</h5>
 					<p>
-						<a href="home.html" class="text-white" style="text-decoration: none;"> First Page</a>
+						<a href="home.php" class="text-white" style="text-decoration: none;"> Home</a>
 						<br>
-						<a href="about.html" class="text-white" style="text-decoration: none;"> About Us</a>
+						<a href="about.php" class="text-white" style="text-decoration: none;"> About Us</a>
 						<br>
 						<a href="staff.php" class="text-white" style="text-decoration: none;"> Banaful Family</a>
 						<br>
-						<a href="executive_committee.php" class="text-white" style="text-decoration: none;"> Executive Council</a>
+						<a href="executive_committee.php" class="text-white" style="text-decoration: none;"> Executive Committee</a>
 						<br>
-						<a href="general_committee.php" class="text-white" style="text-decoration: none;"> General Assembly</a>
+						<a href="general_committee.php" class="text-white" style="text-decoration: none;"> General Committee</a>
 						<br>
-						<a href="activities.html" class="text-white" style="text-decoration: none;"> Activities</a>
+						<a href="activities.php" class="text-white" style="text-decoration: none;"> Activities</a>
 						<br>
 						<a href="microfinance.php" class="text-white" style="text-decoration: none;"> Microfinance</a>
 						<br>
@@ -543,7 +543,7 @@ include "dbConnection.php";
 						<br>
 						<a href="notice.php" class="text-white" style="text-decoration: none;"> Notice</a>
 						<br>
-						<a href="contact.html" class="text-white" style="text-decoration: none;"> Contact</a>
+						<a href="contact.php" class="text-white" style="text-decoration: none;"> Contact</a>
 					</p>
 				</div>
 

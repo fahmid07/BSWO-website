@@ -79,6 +79,9 @@
                                 </div>
                                 <h6 style="color: red; margin-top:10px"><?php echo $error_msg ?></h6>
                             </form>
+                            <div class="text-center">
+                                <a href="home.php">BSWO Home</a>
+                            </div>
                         </div>
                     </div>
                 </div>
